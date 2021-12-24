@@ -158,16 +158,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${carStopList}" var="carStop">
+                            <div th:each="carStop:${carStopList}" >
                                 <tr>
-                                    <td class="col-md-1 textNowrap">${carStop.cid}</td>
-                                    <td class="col-md-1 textNowrap" style="padding: 8px 0px 8px 8px;">${carStop.carNumber}</td>
-                                    <td class="col-md-2_5 textNowrap">${carStop.carType.carTypeName}</td>
-                                    <td class="col-md-2_5 textNowrap">${carStop.carPositionNo}</td>
+                                    <td class="col-md-1 textNowrap" th:text="${carStop.cid">}</td>
+                                    <td class="col-md-1 textNowrap" style="padding: 8px 0px 8px 8px;" th:text="${carStop.carNumber}" ></td>
+                                    <td class="col-md-2_5 textNowrap" th:text="${carStop.carType.carTypeName}"></td>
+                                    <td class="col-md-2_5 textNowrap" th:text="${carStop.carPositionNo}"></td>
                                     <td class="col-md-2_5 textNowrap"><fmt:formatDate value="${carStop.startTime}" pattern="yyyy-MM-dd HH:mm"/></td>
                                     <td class="col-md-2_5 textNowrap"><fmt:formatDate value="${carStop.endTime}" pattern="yyyy-MM-dd HH:mm"/></td>
-                                    <td class="col-md-2_5 textNowrap">${carStop.stopDuration}</td>
-                                    <td class="col-md-2_5 textNowrap">${carStop.stopCoat}</td>
+                                    <td class="col-md-2_5 textNowrap" th:text="${carStop.stopDuration}" ></td>
+                                    <td class="col-md-2_5 textNowrap" th:text="${carStop.stopCoat}"></td>
 
                                     <td class="text-center col-md-2_5">
                                         <button type="button" class="btn bg-olive btn-xs"
@@ -179,7 +179,7 @@
                                         </button>
                                     </td>
                                 </tr>
-                            </c:forEach>
+                            </>
                             </tbody>
                         </table>
                     </form>

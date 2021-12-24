@@ -2,6 +2,7 @@ package com.darksnow.mapper;
 
 import com.darksnow.bean.Tcarposition;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -26,4 +27,16 @@ public interface CarPositionMapper {
     Tcarposition getById(String id);
 
     Integer update(Tcarposition tcarposition);
+
+
+    Integer getAllCount();
+
+    /**
+     * 分页获取 carposition 列表
+     *
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    List<Tcarposition> getFatch(@Param("pageNo") Integer pageNo, @Param("pageSize") Integer pageSize);
 }

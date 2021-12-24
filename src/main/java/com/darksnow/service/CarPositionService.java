@@ -29,4 +29,14 @@ public interface CarPositionService {
      * @return
      */
     Integer update(Tcarposition tcarposition);
+
+    Integer getAllCount();
+
+    /**
+     * 分页查找
+     * @param currPage
+     * @param pageSize
+     * @return
+     */
+    List<Tcarposition> getFatch(Integer currPage, Integer pageSize);
 }

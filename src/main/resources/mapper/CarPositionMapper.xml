@@ -26,4 +26,17 @@
     <update id="update">
         update t_carposition set areaId=#{areaId},positionNo=#{positionNo},isactive=#{isactive} where pid =#{pid}
     </update>
+
+
+    <select id="getAllCount" resultType="int">
+        select count(1) from t_carposition
+    </select>
+
+    <!--  分页获取列表-->
+    <select id="getFatch" resultType="Tcarposition">
+
+        select a.pid,a.areaId,a.positionNo,a.addTime,a.isactive,b.areaName from t_carposition a inner join  t_cararea b on  a.areaId=b.id order by a.pid limit #{pageNo},#{pageSize}
+    </select>
+
+
 </mapper>

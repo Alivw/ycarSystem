@@ -16,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class CarPositionController {
@@ -34,9 +36,18 @@ public class CarPositionController {
 
     @RequestMapping("/spaceManager")
     public String spaceIndex(Model model) {
-        List<Tcarposition> indexPos = carPositionService.indexPos();
-        model.addAttribute("pageInfoList", indexPos);
-        return "car-space-manager";
+        List<Tcarposition> tcarpositions = carPositionService.getFatch(1, 2);
+        Integer total = carPositionService.getAllCount();
+        int pages = total / 2 + 1;
+        Map<String, Integer> map = new HashMap<>();
+        map.put("pages", pages);
+        map.put("total", total);
+        map.put("nextPage", 1 + 1);
+        map.put("prePage", 1 - 1);
+
+        model.addAttribute("pageInfoList", tcarpositions);
+        model.addAttribute("pageInfo", map);
+        return "/car-space-manager";
     }
 
     //新建车位管理信息/spaceAddShow
@@ -76,5 +87,22 @@ public class CarPositionController {
     public String spaceUpdate(Tcarposition tcarposition) {
         carPositionService.update(tcarposition);
         return "redirect:/spaceManager";
+    }
+
+
+    @RequestMapping("/spacemanager/findAll")
+    public String findAll(Integer currPage, Integer pageSize,Model model) {
+        List<Tcarposition> tcarpositions = carPositionService.getFatch(currPage, pageSize);
+        Integer total = carPositionService.getAllCount();
+        int pages = total / 2 + 1;
+        Map<String, Integer> map = new HashMap<>();
+        map.put("pages", pages);
+        map.put("total", total);
+        map.put("nextPage", currPage + 1);
+        map.put("prePage", currPage - 1);
+
+        model.addAttribute("pageInfoList", tcarpositions);
+        model.addAttribute("pageInfo", map);
+        return "/car-space-manager";
     }
 }

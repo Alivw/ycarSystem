@@ -5,7 +5,8 @@ import java.util.Date;
 public class Tcarstop {
     private  Integer   cid;
     private  String    carNumber;
-    private  Integer   carTypeId;
+    private Integer carTypeId;
+    private String carTypeName;
     private  String    carPositionNo;
     private  Date      startTime;
     private  Date      endTime;
@@ -95,6 +96,14 @@ public class Tcarstop {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String getCarTypeName() {
+        return carTypeName;
+    }
+
+    public void setCarTypeName(String carTypeName) {
+        this.carTypeName = carTypeName;
     }
 
     @Override
