@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.darksnow.mapper.CarPositionMapper">
+    <!-- 查询停车管理信息 indexPos-->
+    <select id="indexPos" resultType="Tcarposition">
+
+       select a.pid,a.areaId,a.positionNo,a.addTime,a.isactive,b.areaName from t_carposition a inner join  t_cararea b on  a.areaId=b.id
+    </select>
+
+    <!--新建停车管理-->
+    <insert id="addPos" parameterType="com.darksnow.bean.Tcarposition">
+        insert  into t_carposition  (areaId,positionNo,addTime,isactive) values (#{areaId},#{positionNo},#{addTime},#{isactive})
+     </insert>
+
+    <!-- 删除车位-->
+    <delete id="delById">
+        delete from  t_carposition where pid=#{id}
+    </delete>
+
+    <select id="getById" resultType="Tcarposition">
+        select  * from t_carposition where pid =#{id}
+    </select>
+
+    <update id="update">
+        update t_carposition set areaId=#{areaId},positionNo=#{positionNo},isactive=#{isactive} where pid =#{pid}
+    </update>
+</mapper>

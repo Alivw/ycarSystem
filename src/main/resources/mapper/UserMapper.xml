@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.darksnow.mapper.UserMapper">
+    <!--    获取用户类别合集-->
+    <select id="indexUser" resultType="Tuser">
+        select * from t_user
+    </select>
+
+    <!--根据id删除用户-->
+    <delete id="deluser" >
+        delete from t_user where id = #{id}
+    </delete>
+
+    <!--    新建用户信息userManagerAdd-->
+    <insert id="adduser">
+        insert  into  t_user values (#{id},#{userName},#{password},#{trueName})
+    </insert>
+
+    <!--根据id查询出需要修改的信息 -->
+    <select id="getUserById" resultType="Tuser">
+        select id,userName,password,trueName from t_user where id = #{id}
+    </select>
+
+    <update id="updateUser">
+        update  t_user set userName = #{userName},
+                           password = #{password},
+                           trueName = #{trueName}
+                           where id = #{id}
+    </update>
+</mapper>

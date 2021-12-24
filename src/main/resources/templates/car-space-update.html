@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>停车场管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./static/css/layui.css" media="all">
+    <link rel="stylesheet" href="./static/css/bootstrap.css">
+    <link rel="stylesheet"
+          href="./static/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="./static/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="./static/plugins/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet"
+          href="./static/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet"
+          href="./static/plugins/morris/morris.css">
+    <link rel="stylesheet"
+          href="./static/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <link rel="stylesheet"
+          href="./static/plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet"
+          href="./static/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet"
+          href="./static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet"
+          href="./static/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet"
+          href="./static/plugins/treeTable/jquery.treetable.css">
+    <link rel="stylesheet"
+          href="./static/plugins/treeTable/jquery.treetable.theme.default.css">
+    <link rel="stylesheet"
+          href="./static/plugins/select2/select2.css">
+    <link rel="stylesheet"
+          href="./static/plugins/colorpicker/bootstrap-colorpicker.min.css">
+    <link rel="stylesheet"
+          href="./static/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
+    <link rel="stylesheet"
+          href="./static/plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet"
+          href="./static/plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet"
+          href="./static/css/style.css">
+    <link rel="stylesheet"
+          href="./static/plugins/ionslider/ion.rangeSlider.css">
+    <link rel="stylesheet"
+          href="./static/plugins/ionslider/ion.rangeSlider.skinNice.css">
+    <link rel="stylesheet"
+          href="./static/plugins/bootstrap-slider/slider.css">
+    <link rel="stylesheet"
+          href="./static/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
+    <link rel="stylesheet"
+          href="./static/css/darksnow.css">
+</head>
+<body>
+
+<div class="main">
+    <div class="title">
+        <a href="${pageContext.request.contextPath}/index.jsp">
+            <li class="layui-nav-item">
+                <p>停车场管理系统</p>
+            </li>
+        </a>
+    </div>
+    <ul class="layui-nav list_box">
+        <!-- style="float: right;margin-right: 100px" -->
+        <li class="layui-nav-item">
+            <a href="javascript:;" style="font-size: 20px;color: #fff">当前用户：<img
+                    src="./static/images/darksnow.jpg" class="layui-nav-img">${login.userName}</a>
+            <dl class="layui-nav-child">
+                <dd><a href="${pageContext.request.contextPath}/login.jsp">退出登录</a></dd>
+            </dl>
+        </li>
+    </ul>
+</div>
+
+<script src="./static/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use('element', function () {
+        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+        //监听导航点击
+        element.on('nav(demo)', function (elem) {
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+</script>
+
+<div style="height: 619px;background-color: #ecf0f5">
+    <div class="list-group" style="padding: 20px 0px 0px 40px;width: 400px;float: left;">
+        <button type="button" class="list-group-item list-group-item-action active" disabled>系统菜单</button>
+        <button type="button" class="list-group-item list-group-item-action"
+                onclick='location.href="/userManager"'>用户管理
+        </button>
+        <button type="button" class="list-group-item list-group-item-action"
+                onclick='location.href="/typeManager"'>车辆类型管理
+        </button>
+        <button type="button" class="list-group-item list-group-item-action"
+                onclick='location.href="/areaManager"'>停车区域管理
+        </button>
+        <button type="button" class="list-group-item list-group-item-action"
+                onclick='location.href="/spaceManager"'>车位管理
+        </button>
+        <button type="button" class="list-group-item list-group-item-action"
+                onclick='location.href="/stopManager"'>停车管理
+        </button>
+    </div>
+
+    <form action="/spacemanager/spaceUpdate">
+        <input type="hidden" name="pid" th:value="${carPosition.pid}">
+        <section class="content" style="float: left;width: 1100px"> <!-- .box-body -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">车位管理之修改</h3>
+                </div>
+
+                <div class="box-body" style="padding-left: 300px">
+                    <div style="width: 400px" class="layui-form-item">
+                        <label class="layui-form-label" style="padding: 8px 0px;width: 85px;">停车区域名称</label>
+                        <div class="layui-input-block">
+                        <select class="form-control select2" style="width: 100%" name="areaId">
+                            <div th:each="carArea:${carAreaList}">
+                                    <option th:if="${carPosition.areaId} == ${carArea.id}" th:value="${carArea.id}" th:text="${carArea.areaName}" selected>${carArea.areaName}</option>
+                                    <option th:if="${carPosition.areaId} != ${carArea.id}" th:value="${carArea.id}" th:text="${carArea.areaName}">${carArea.areaName}</option>
+                            </div>
+                        </select>
+                        </div>
+                    </div>
+                    <div style="width: 400px" class="layui-form-item">
+                        <label class="layui-form-label" style="padding: 8px 0px;width: 85px;">车位编号</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="positionNo" required lay-verify="required" placeholder="请输入车位编号"
+                                   autocomplete="off" class="layui-input" th:value="${carPosition.positionNo}">
+                        </div>
+                    </div>
+                    <div style="width: 400px" class="layui-form-item">
+                        <label class="layui-form-label" style="padding: 8px 0px;width: 85px;">是否空闲</label>
+                        <div class="layui-input-block">
+                            <select class="form-control select2" style="width: 100%" name="isactive">
+                                <div >
+                                    <option th:if="${carPosition.isactive eq 0}" value="0" selected >空闲</option>
+                                    <option th:if="${carPosition.isactive eq 1}" value="1"  selected >非空闲</option>
+                                    <option th:if="${carPosition.isactive ne 0}" value="0"   >空闲</option>
+                                    <option th:if="${carPosition.isactive ne 1}" value="1"   >非空闲</option>
+                                <div>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="padding-left: 100px">
+                        <button type="submit" style="margin-right: 150px"
+                                class="layui-btn layui-btn-primary layui-btn-radius" >修改
+                        </button>
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-radius"
+                                onclick="history.back(-1);">返回
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-footer-->
+        </section>
+    </form>
+</div>
+
+
+<div style="height: 70px;padding: 25px 0px">
+    <div style="margin: 0px auto;width: 410px;height: 20px;">
+        <strong>Copyright &copy; 2019-11-11 <a
+                href="${pageContext.request.contextPath}/index.jsp">停车场管理系统</a>.
+        </strong> All rights reserved.
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.darksnow.mapper.CarAresMapper">
+    <!--    获取停车区域集合-->
+    <select id="indexAres" resultType="Tcarares">
+        select * from t_cararea
+    </select>
+
+    <!--    新建停车区域-->
+    <insert id="addAres">
+        insert  into t_cararea values (#{id},#{areaName},#{price})
+    </insert>
+
+    <!--    根据id删除停车区域-->
+    <delete id="delAres">
+        delete from  t_cararea where id = #{id}
+    </delete>
+
+    <!--    根据id查询需要修改的停车区域信息-->
+    <select id="getAresById" resultType="Tcarares">
+        select id,areaName,price from t_cararea where id = #{id}
+    </select>
+
+    <!--    修改停车区域信息-->
+    <update id="updateAres">
+        update  t_cararea set areaName = #{areaName}, price = #{price} where  id = #{id}
+    </update>
+
+    <select id="getAllAreas" resultType="com.darksnow.bean.Tcarares">
+         select * from t_cararea
+    </select>
+
+</mapper>
