@@ -1,9 +1,7 @@
 package com.darksnow.controller;
 
 import com.darksnow.bean.Tcartype;
-import com.darksnow.bean.Tuser;
 import com.darksnow.service.CarTypeService;
-import com.sun.org.apache.bcel.internal.generic.MONITORENTER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -4,11 +4,9 @@ import com.darksnow.bean.Tcarposition;
 import com.darksnow.bean.Tcarstop;
 import com.darksnow.mapper.CarPositionMapper;
 import com.darksnow.mapper.CarStopMapper;
-import com.darksnow.service.CarPositionService;
 import com.darksnow.service.CarStopService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.context.request.async.TimeoutCallableProcessingInterceptor;
 
 import javax.annotation.Resource;
 import java.text.DecimalFormat;

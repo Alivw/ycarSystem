@@ -2,7 +2,6 @@ package com.darksnow.service;
 
 import com.darksnow.bean.Tcartype;
 
-
 import java.util.List;
 
 public interface CarTypeService {

@@ -4,17 +4,13 @@ import com.darksnow.bean.Tcarares;
 import com.darksnow.bean.Tcarposition;
 import com.darksnow.service.CarAresService;
 import com.darksnow.service.CarPositionService;
-import jdk.internal.org.objectweb.asm.commons.JSRInlinerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.request.async.TimeoutCallableProcessingInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;

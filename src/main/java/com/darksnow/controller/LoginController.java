@@ -27,9 +27,7 @@ public class LoginController {
     public String loginBy(String userName, String password, Model model, HttpSession session){
         Tuser tuser = loginService.loginBy(userName, MD5Utils.md5Password(password));
         if (tuser != null){
-            session.getAttribute(tuser.getUserName());
-            session.getAttribute(tuser.getPassword());
-            session.setAttribute("userName",tuser.getUserName());
+            session.setAttribute("loginUser",tuser.getUserName());
             return "index";
         }
         model.addAttribute("loginResult",false);

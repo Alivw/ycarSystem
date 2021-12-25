@@ -1,7 +1,6 @@
 package com.darksnow.mapper;
 
 import com.darksnow.bean.Tcartype;
-import com.darksnow.bean.Tuser;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

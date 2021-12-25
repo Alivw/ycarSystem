@@ -1,7 +1,6 @@
 package com.darksnow.service.imp;
 
 import com.darksnow.bean.Tcartype;
-import com.darksnow.bean.Tuser;
 import com.darksnow.mapper.CarTypeMapper;
 import com.darksnow.service.CarTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
