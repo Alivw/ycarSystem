@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.darksnow.mapper.CarStopMapper">
+
+    <!--    获取停车列表-->
+    <select id="list" resultType="com.darksnow.bean.Tcarstop">
+        select  a.*,b.carTypeName carTypeName from  t_carstop a ,t_cartype b where a.carTypeId =b.id order by cid
+    </select>
+
+
+</mapper>
