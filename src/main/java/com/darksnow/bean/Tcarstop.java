@@ -3,28 +3,17 @@ package com.darksnow.bean;
 import java.util.Date;
 
 public class Tcarstop {
-    private  Integer   cid;
-    private  String    carNumber;
+    private Integer cid;
+    private String carNumber;
     private Integer carTypeId;
     private String carTypeName;
-    private  String    carPositionNo;
-    private  Date      startTime;
-    private  Date      endTime;
-    private  float    stopDuration;
-    private  float    stopCoat;
-    private  float    price;
-
-    public Tcarstop(Integer cid, String carNumber, Integer carTypeId, String carPositionNo, Date startTime, Date endTime, float stopDuration, float stopCoat, float price) {
-        this.cid = cid;
-        this.carNumber = carNumber;
-        this.carTypeId = carTypeId;
-        this.carPositionNo = carPositionNo;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.stopDuration = stopDuration;
-        this.stopCoat = stopCoat;
-        this.price = price;
-    }
+    private String pid;
+    private String carPositionNo;
+    private Date startTime;
+    private Date endTime;
+    private Float stopDuration;
+    private Float stopCoat;
+    private Float price;
 
     public Integer getCid() {
         return cid;
@@ -48,6 +37,22 @@ public class Tcarstop {
 
     public void setCarTypeId(Integer carTypeId) {
         this.carTypeId = carTypeId;
+    }
+
+    public String getCarTypeName() {
+        return carTypeName;
+    }
+
+    public void setCarTypeName(String carTypeName) {
+        this.carTypeName = carTypeName;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
     public String getCarPositionNo() {
@@ -74,50 +79,27 @@ public class Tcarstop {
         this.endTime = endTime;
     }
 
-    public double getStopDuration() {
+    public Float getStopDuration() {
         return stopDuration;
     }
 
-    public void setStopDuration(float stopDuration) {
+    public void setStopDuration(Float stopDuration) {
         this.stopDuration = stopDuration;
     }
 
-    public double getStopCoat() {
+    public Float getStopCoat() {
         return stopCoat;
     }
 
-    public void setStopCoat(float stopCoat) {
+    public void setStopCoat(Float stopCoat) {
         this.stopCoat = stopCoat;
     }
 
-    public double getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
-    }
-
-    public String getCarTypeName() {
-        return carTypeName;
-    }
-
-    public void setCarTypeName(String carTypeName) {
-        this.carTypeName = carTypeName;
-    }
-
-    @Override
-    public String toString() {
-        return "Tcarstop{" +
-                "cid=" + cid +
-                ", carNumber='" + carNumber + '\'' +
-                ", carTypeId=" + carTypeId +
-                ", carPositionNo='" + carPositionNo + '\'' +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", stopDuration=" + stopDuration +
-                ", stopCoat=" + stopCoat +
-                ", price=" + price +
-                '}';
     }
 }

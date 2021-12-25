@@ -12,9 +12,24 @@ import java.util.List;
  */
 @Mapper
 public interface CarStopMapper {
+
+
     /**
      * 获取停车列表
+     *
      * @return
      */
     List<Tcarstop> list();
+
+    /**
+     * 新增
+     *
+     * @param tcarstop
+     * @return
+     */
+    Integer insert(Tcarstop tcarstop);
+
+    Tcarstop getById(Integer cid);
+
+    Integer update(Tcarstop tcarstop);
 }

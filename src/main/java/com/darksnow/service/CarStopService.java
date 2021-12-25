@@ -17,4 +17,12 @@ public interface CarStopService {
      */
     List<Tcarstop> list();
 
+    boolean updateStopCar(Tcarstop tcarstop, Integer pid);
+
+    /**
+     * 停车 离场
+     * @param cid
+     * @return
+     */
+    boolean leaveCar(Integer cid);
 }

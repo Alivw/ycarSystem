@@ -39,4 +39,10 @@ public interface CarPositionService {
      * @return
      */
     List<Tcarposition> getFatch(Integer currPage, Integer pageSize);
+
+    /**
+     * 获取空闲的车位列表
+     * @return
+     */
+    List<Tcarposition> getActiveList();
 }

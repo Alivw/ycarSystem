@@ -128,7 +128,7 @@
                         <div class="form-group form-inline">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default" title="新建"
-                                        onclick='location.href="${pageContext.request.contextPath}/stopmanager/updateShow"'>
+                                        onclick='location.href="/stopmanager/updateShow"'>
                                     <i class="fa fa-file-o"></i> 新建
                                 </button>
                                 <button type="button" class="btn btn-default" title="刷新"
@@ -172,10 +172,10 @@
 
                                     <td class="text-center col-md-2_5">
                                         <button type="button" class="btn bg-olive btn-xs"
-                                                onclick='location.href="${pageContext.request.contextPath}/stopmanager/carStopOver?cid=${carStop.cid}"'>离场
+                                                th:onclick="'leaveOne('+${carStop.cid}+')'">离场
                                         </button>
                                         <button type="button" class="btn bg-olive btn-xs"
-                                                onclick='delOne(${carStop.cid})'>
+                                                th:onclick="'delOne('+${carStop.cid}+')'">
                                             删除
                                         </button>
                                     </td>
@@ -205,8 +205,12 @@
     function delOne(id) {
         if (confirm("您确定要删除吗？")) {
             //执行删除操作
-            location.href = "${pageContext.request.contextPath}/stopmanager/StopManagerDelete?cid=" + id;
+            location.href = "/stopmanager/StopManagerDelete?cid=" + id;
         }
+    }
+
+    function leaveOne(id){
+        location.href="/stopmanager/leaveCar?cid="+id
     }
 </script>
 </body>

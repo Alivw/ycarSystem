@@ -4,10 +4,117 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.darksnow.mapper.CarStopMapper">
 
+    <sql  id="key">
+        <trim suffixOverrides=",">
+            <if test="carNumber != null and carNumber != ''">
+                carNumber,
+            </if>
+            <if test="carTypeId != null and carTypeId != ''">
+                carTypeId,
+            </if>
+            <if test="carPositionNo != null and carPositionNo != ''">
+                carPositionNo,
+            </if>
+            <if test="startTime != null ">
+                startTime,
+            </if>
+            <if test="endTime != null ">
+                endTime,
+            </if>
+            <if test="stopDuration != null and stopDuration != ''">
+                stopDuration,
+            </if>
+            <if test="stopCoat != null and stopCoat != ''">
+                stopCoat,
+            </if>
+            <if test="price != null and price != ''">
+                price,
+            </if>
+
+
+        </trim>
+    </sql>
+
+    <sql  id="value">
+        <trim suffixOverrides=",">
+            <if test="carNumber != null and carNumber != ''">
+                #{carNumber},
+            </if>
+            <if test="carTypeId != null and carTypeId != ''">
+                #{carTypeId},
+            </if>
+            <if test="carPositionNo != null and carPositionNo != ''">
+                #{carPositionNo},
+            </if>
+            <if test="startTime != null">
+                #{startTime},
+            </if>
+            <if test="endTime != null ">
+                #{endTime},
+            </if>
+            <if test="stopDuration != null and stopDuration != ''">
+                #{stopDuration},
+            </if>
+            <if test="stopCoat != null and stopCoat != ''">
+                #{stopCoat},
+            </if>
+            <if test="price != null and price != ''">
+                #{price},
+            </if>
+
+
+        </trim>
+    </sql>
+
+
+    <sql    id="update">
+        <trim suffixOverrides=",">
+            <if test="carNumber != null and carNumber != ''">
+                carNumber = #{carNumber},
+            </if>
+            <if test="carTypeId != null and carTypeId != ''">
+               carTypeId =  #{carTypeId},
+            </if>
+            <if test="carPositionNo != null and carPositionNo != ''">
+               carPositionNo= #{carPositionNo},
+            </if>
+            <if test="startTime != null">
+               startTime= #{startTime},
+            </if>
+            <if test="endTime != null ">
+               endTime= #{endTime},
+            </if>
+            <if test="stopDuration != null ">
+               stopDuration= #{stopDuration},
+            </if>
+            <if test="stopCoat != null ">
+                stopCoat= #{stopCoat},
+            </if>
+            <if test="price != null ">
+              price=  #{price},
+            </if>
+        </trim>
+    </sql>
+
     <!--    获取停车列表-->
     <select id="list" resultType="com.darksnow.bean.Tcarstop">
         select  a.*,b.carTypeName carTypeName from  t_carstop a ,t_cartype b where a.carTypeId =b.id order by cid
     </select>
 
 
+    <insert id="insert" parameterType="com.darksnow.bean.Tcarstop">
+     insert into t_carstop(<include refid="key"/>)
+
+     values(<include refid="value"/>)
+
+    </insert>
+
+
+    <select id="getById" resultType="com.darksnow.bean.Tcarstop">
+        select * from   t_carstop where cid =#{cid}
+    </select>
+
+    <update id="update">
+        update t_carstop set <include refid="update"/> where cid=#{cid}
+    </update>
 </mapper>

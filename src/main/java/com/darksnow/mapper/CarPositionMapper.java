@@ -39,4 +39,17 @@ public interface CarPositionMapper {
      * @return
      */
     List<Tcarposition> getFatch(@Param("pageNo") Integer pageNo, @Param("pageSize") Integer pageSize);
+
+    /**
+     * 获取空闲的车位列表
+     * @return
+     */
+    List<Tcarposition> getActiveList();
+
+    /**
+     * 通过positionNo 获取 price
+     * @param carPositionNo
+     * @return
+     */
+    Float getPriceByPositonNo(String carPositionNo);
 }

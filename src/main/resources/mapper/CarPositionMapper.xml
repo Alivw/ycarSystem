@@ -3,6 +3,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.darksnow.mapper.CarPositionMapper">
+
+
+    <sql id="update">
+        <trim suffixOverrides=",">
+            <if test="areaId !=null and areaId != ''">
+                areaId=#{areaId},
+            </if>
+            <if test="positionNo !=null and positionNo != ''">
+                positionNo=#{positionNo},
+            </if>
+            <if test="addTime !=null ">
+                addTime=#{addTime},
+            </if>
+            <if test="isactive !=null">
+                isactive=#{isactive},
+            </if>
+
+        </trim>
+    </sql>
     <!-- 查询停车管理信息 indexPos-->
     <select id="indexPos" resultType="Tcarposition">
 
@@ -24,7 +43,7 @@
     </select>
 
     <update id="update">
-        update t_carposition set areaId=#{areaId},positionNo=#{positionNo},isactive=#{isactive} where pid =#{pid}
+        update t_carposition set <include refid="update"/> where pid =#{pid}
     </update>
 
 
@@ -39,4 +58,12 @@
     </select>
 
 
+    <select id="getActiveList" resultType="Tcarposition">
+        select * from  t_carposition where isactive=0 order by pid
+    </select>
+
+
+    <select id="getPriceByPositonNo" resultType="float" >
+        select b.price  from t_carposition a ,t_cararea b where a.positionNo=#{positionNo} and a.areaId=b.id
+    </select>
 </mapper>

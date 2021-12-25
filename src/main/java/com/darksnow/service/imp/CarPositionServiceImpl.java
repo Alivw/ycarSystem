@@ -65,6 +65,11 @@ public class CarPositionServiceImpl implements CarPositionService {
         return carPositionMapper.getFatch(pageNo, pageSize);
     }
 
+    @Override
+    public List<Tcarposition> getActiveList() {
+        return carPositionMapper.getActiveList();
+
+    }
 
 
 }
