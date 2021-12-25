@@ -64,4 +64,10 @@ public class CarStopController {
         stopService.leaveCar(cid);
         return "redirect:/stopManager";
     }
+
+    @RequestMapping("/stopmanager/StopManagerDelete")
+    public String delete(Integer cid) {
+        stopService.deleteById(cid);
+        return "redirect:/stopManager";
+    }
 }

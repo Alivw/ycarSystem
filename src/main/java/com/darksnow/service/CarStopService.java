@@ -25,4 +25,11 @@ public interface CarStopService {
      * @return
      */
     boolean leaveCar(Integer cid);
+
+    /**
+     * 根据id 删除
+     * @param cid
+     * @return
+     */
+    Integer deleteById(Integer cid);
 }

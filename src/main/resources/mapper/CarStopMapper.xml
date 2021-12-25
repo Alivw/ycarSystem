@@ -117,4 +117,9 @@
     <update id="update">
         update t_carstop set <include refid="update"/> where cid=#{cid}
     </update>
+
+    <!-- 根据id删除-->
+    <delete id="deleteById">
+        delete from  t_carstop where cid=#{cid}
+    </delete>
 </mapper>

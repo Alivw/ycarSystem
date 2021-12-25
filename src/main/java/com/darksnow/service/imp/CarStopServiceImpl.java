@@ -4,6 +4,7 @@ import com.darksnow.bean.Tcarposition;
 import com.darksnow.bean.Tcarstop;
 import com.darksnow.mapper.CarPositionMapper;
 import com.darksnow.mapper.CarStopMapper;
+import com.darksnow.service.CarPositionService;
 import com.darksnow.service.CarStopService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,6 +52,7 @@ public class CarStopServiceImpl implements CarStopService {
         return insert > 0 && update > 0;
     }
 
+    @Transactional
     @Override
     public boolean leaveCar(Integer cid) {
         // 通过 停车id 找到 那条记录
@@ -77,6 +79,18 @@ public class CarStopServiceImpl implements CarStopService {
         carstop.setPrice(areaPrice);
         carstop.setStopCoat(stopCoat);
         Integer update = stopMapper.update(carstop);
+
+        // 将position 的状态改为 空闲
+        Tcarposition updateEntity = positionMapper.getByPositionNo(carstop.getCarPositionNo());
+        updateEntity.setIsactive(0);
+        positionMapper.update(updateEntity);
+
         return update > 0;
+    }
+
+    @Override
+    public Integer deleteById(Integer cid) {
+
+        return stopMapper.deleteById(cid);
     }
 }

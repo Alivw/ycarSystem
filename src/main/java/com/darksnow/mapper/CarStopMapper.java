@@ -32,4 +32,11 @@ public interface CarStopMapper {
     Tcarstop getById(Integer cid);
 
     Integer update(Tcarstop tcarstop);
+
+    /**
+     * 根据 id 删除
+     * @param cid
+     * @return
+     */
+    Integer deleteById(Integer cid);
 }

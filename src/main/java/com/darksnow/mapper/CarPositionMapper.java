@@ -52,4 +52,11 @@ public interface CarPositionMapper {
      * @return
      */
     Float getPriceByPositonNo(String carPositionNo);
+
+    /**
+     * 通过 positionNo 获取 entity
+     * @param carPositionNo
+     * @return
+     */
+    Tcarposition getByPositionNo(String carPositionNo);
 }
