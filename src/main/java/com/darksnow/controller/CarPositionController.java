@@ -44,7 +44,7 @@ public class CarPositionController {
         map.put("total", total);
         map.put("nextPage", 1 + 1);
         map.put("prePage", 1 - 1);
-
+        map.put("pageSize", 2);
         model.addAttribute("pageInfoList", tcarpositions);
         model.addAttribute("pageInfo", map);
         return "/car-space-manager";
@@ -100,6 +100,7 @@ public class CarPositionController {
         map.put("total", total);
         map.put("nextPage", currPage + 1);
         map.put("prePage", currPage - 1);
+        map.put("pageSize", pageSize);
 
         model.addAttribute("pageInfoList", tcarpositions);
         model.addAttribute("pageInfo", map);
