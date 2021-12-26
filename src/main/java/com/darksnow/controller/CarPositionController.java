@@ -70,7 +70,9 @@ public class CarPositionController {
 
     @RequestMapping("/carSpaceUpdate")
     public String carSpaceUpdate(String id, Model model) {
+        // 1、通过入参找到要修改哪个一个 position
         Tcarposition tcarposition = carPositionService.getById(id);
+        // 2、获取 停车区域列表
         List<Tcarares> allAreas = carAresService.getAllAreas();
         model.addAttribute("carAreaList", allAreas);
         model.addAttribute("carPosition", tcarposition);
