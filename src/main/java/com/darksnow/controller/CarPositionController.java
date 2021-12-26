@@ -69,11 +69,9 @@ public class CarPositionController {
     }
 
     @RequestMapping("/carSpaceUpdate")
-    public String carSpaceUpdate(String id, Integer areaId, Model model) {
+    public String carSpaceUpdate(String id, Model model) {
         Tcarposition tcarposition = carPositionService.getById(id);
         List<Tcarares> allAreas = carAresService.getAllAreas();
-        Tcarares tcarares = carAresService.getAresById(areaId);
-
         model.addAttribute("carAreaList", allAreas);
         model.addAttribute("carPosition", tcarposition);
         return "car-space-update";
@@ -87,7 +85,7 @@ public class CarPositionController {
 
 
     @RequestMapping("/spacemanager/findAll")
-    public String findAll(Integer currPage, Integer pageSize,Model model) {
+    public String findAll(Integer currPage, Integer pageSize, Model model) {
         List<Tcarposition> tcarpositions = carPositionService.getFatch(currPage, pageSize);
         Integer total = carPositionService.getAllCount();
         int pages = total / 2 + 1;

@@ -125,8 +125,7 @@
                         <div class="layui-input-block">
                         <select class="form-control select2" style="width: 100%" name="areaId">
                             <div th:each="carArea:${carAreaList}">
-                                    <option th:if="${carPosition.areaId} == ${carArea.id}" th:value="${carArea.id}" th:text="${carArea.areaName}" selected>${carArea.areaName}</option>
-                                    <option th:if="${carPosition.areaId} != ${carArea.id}" th:value="${carArea.id}" th:text="${carArea.areaName}">${carArea.areaName}</option>
+                                    <option th:selected="${carPosition.areaId} == ${carArea.id}" th:value="${carArea.id}" th:text="${carArea.areaName}" ></option>
                             </div>
                         </select>
                         </div>

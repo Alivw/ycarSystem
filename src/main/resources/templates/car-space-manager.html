@@ -161,11 +161,6 @@
                                     <td th:text="${carPosition.pid}">${carPosition.id}</td>
                                     <td th:text="${carPosition.areaName}">${carPosition.areaName}</td>
                                     <td th:text="${carPosition.positionNo}">${carPosition.positionNO}</td>
-
-<!--                                    <span th:text="${#dates.format(user.date, 'yyyy-MM-dd')}">4564546</span>-->
-
-<!--                                    <td><fmt:formatDate tybe="date" th:value="${carPosition.addTime}" pattern="yyyy-MM-dd HH:mm"/></td>-->
-
                                     <td type="Date" th:text="${#dates.format(carPosition.addTime, 'yyyy-MM-dd')}" ></td>
                                     <td th:text="${carPosition.isactive == 0 ? '空闲' : '非空闲'}">${carPosition.isactive == 0 ? "空闲" : "非空闲"}</td>
 
@@ -174,7 +169,7 @@
                                                 th:onclick="'javascript:delOne('+${carPosition.pid}+')' ">删除
                                         </button>
                                         <button type="button" class="btn bg-olive btn-xs"
-                                                th:onclick="'javascript:updateOne('+${carPosition.pid}+','+${carPosition.areaId}+')'">
+                                                th:onclick="'javascript:updateOne('+${carPosition.pid}+')'">
                                             修改
                                         </button>
                                     </td>
@@ -257,8 +252,8 @@
             location.href = "/spacemanager/spaceManagerDelete?id=" + id;
         }
     }
-    function updateOne(id,areaId) {
-            location.href = "carSpaceUpdate?id=" + id+"&areaId="+areaId;
+    function updateOne(id) {
+        location.href = "carSpaceUpdate?id=" + id;
     }
 </script>
 </body>
