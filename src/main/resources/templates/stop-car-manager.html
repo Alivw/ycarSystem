@@ -172,7 +172,7 @@
 
                                     <td class="text-center col-md-2_5">
                                         <button type="button" class="btn bg-olive btn-xs"
-                                                th:onclick="'leaveOne('+${carStop.cid}+')'">离场
+                                                th:onclick="|leaveOne( ${carStop.cid} , ${carStop.pid} )|">离场
                                         </button>
                                         <button type="button" class="btn bg-olive btn-xs"
                                                 th:onclick="'delOne('+${carStop.cid}+')'">
@@ -209,8 +209,8 @@
         }
     }
 
-    function leaveOne(id){
-        location.href="/stopmanager/leaveCar?cid="+id
+    function leaveOne(id,pid){
+        location.href = "/stopmanager/leaveCar?cid=" + id + "&pid=" + pid;
     }
 </script>
 </body>

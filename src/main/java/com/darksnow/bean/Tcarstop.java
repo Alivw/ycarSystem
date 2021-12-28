@@ -7,13 +7,14 @@ public class Tcarstop {
     private String carNumber;
     private Integer carTypeId;
     private String carTypeName;
-    private String pid;
+    private Integer pid;
     private String carPositionNo;
     private Date startTime;
     private Date endTime;
     private Float stopDuration;
     private Float stopCoat;
     private Float price;
+
 
     public Integer getCid() {
         return cid;
@@ -47,12 +48,12 @@ public class Tcarstop {
         this.carTypeName = carTypeName;
     }
 
-    public String getPid() {
-        return pid;
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid;
+    public Integer getPid() {
+        return pid;
     }
 
     public String getCarPositionNo() {

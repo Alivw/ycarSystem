@@ -53,15 +53,15 @@ public class CarStopController {
 
 
     @RequestMapping("/updateStopCar")
-    public String updateStopCar(Model model, Tcarstop tcarstop, Integer pid) {
-        stopService.updateStopCar(tcarstop, pid);
+    public String updateStopCar(Model model, Tcarstop tcarstop) {
+        stopService.updateStopCar(tcarstop);
 
         return "redirect:/stopManager";
     }
 
     @RequestMapping("/stopmanager/leaveCar")
-    public String leaveCar(Integer cid) {
-        stopService.leaveCar(cid);
+    public String leaveCar(Integer cid, Integer pid) {
+        stopService.leaveCar(cid,pid);
         return "redirect:/stopManager";
     }
 

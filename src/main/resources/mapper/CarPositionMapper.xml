@@ -63,8 +63,8 @@
     </select>
 
 
-    <select id="getPriceByPositonNo" resultType="float" >
-        select b.price  from t_carposition a ,t_cararea b where a.positionNo=#{positionNo} and a.areaId=b.id
+    <select id="getPriceByPid" resultType="float" >
+        select b.price  from t_carposition a ,t_cararea b where a.pid=#{pid} and a.areaId=b.id
     </select>
 
     <select id="getByPositionNo" resultType="com.darksnow.bean.Tcarposition">

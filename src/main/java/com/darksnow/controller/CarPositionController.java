@@ -34,7 +34,7 @@ public class CarPositionController {
     public String spaceIndex(Model model) {
         List<Tcarposition> tcarpositions = carPositionService.getFatch(1, 2);
         Integer total = carPositionService.getAllCount();
-        int pages = total / 2 + total / 2 == 0 ? 0 : 1;
+        int pages = total / 2 + (total / 2 == 0 ? 0 : 1);
         Map<String, Integer> map = new HashMap<>();
         map.put("pages", pages);
         map.put("total", total);
@@ -68,7 +68,7 @@ public class CarPositionController {
         return "redirect:/spaceManager";
     }
 
-    @RequestMapping("/carSpaceUpdate")
+    @RequestMapping("/spacemanager/carSpaceUpdate")
     public String carSpaceUpdate(String id, Model model) {
         // 1、通过入参找到要修改哪个一个 position
         Tcarposition tcarposition = carPositionService.getById(id);
@@ -90,7 +90,7 @@ public class CarPositionController {
     public String findAll(Integer currPage, Integer pageSize, Model model) {
         List<Tcarposition> tcarpositions = carPositionService.getFatch(currPage, pageSize);
         Integer total = carPositionService.getAllCount();
-        int pages = total / pageSize + total % pageSize == 0 ? 0 : 1;
+        int pages = total / pageSize + (total % pageSize == 0 ? 0 : 1);
         Map<String, Integer> map = new HashMap<>();
         map.put("pages", pages);
         map.put("total", total);

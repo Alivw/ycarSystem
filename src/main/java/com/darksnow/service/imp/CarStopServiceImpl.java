@@ -34,16 +34,17 @@ public class CarStopServiceImpl implements CarStopService {
 
     @Transactional
     @Override
-    public boolean updateStopCar(Tcarstop tcarstop, Integer pid) {
+    public boolean updateStopCar(Tcarstop tcarstop) {
         // 1、 向 stop 表插入一条数据
-        Tcarposition p = positionMapper.getById(String.valueOf(pid));
+        Tcarposition p = positionMapper.getById(String.valueOf(tcarstop.getPid()));
         tcarstop.setCarPositionNo(p.getPositionNo());
+        tcarstop.setPid(p.getPid());
         tcarstop.setStartTime(new Date());
         Integer insert = stopMapper.insert(tcarstop);
 
         // 2、 更改停车位的状态为 非空闲
         Tcarposition tcarposition = new Tcarposition();
-        tcarposition.setPid(pid);
+        tcarposition.setPid(tcarstop.getPid());
         tcarposition.setIsactive(1);
         Integer update = positionMapper.update(tcarposition);
 
@@ -52,12 +53,12 @@ public class CarStopServiceImpl implements CarStopService {
 
     @Transactional
     @Override
-    public boolean leaveCar(Integer cid) {
+    public boolean leaveCar(Integer cid, Integer pid) {
         // 通过 停车id 找到 那条记录
         Tcarstop carstop = stopMapper.getById(cid);
 
         // 通过 positionNo 获取 positon ，在通过 areaid 获取价格
-        Float areaPrice = positionMapper.getPriceByPositonNo(carstop.getCarPositionNo());
+        Float areaPrice = positionMapper.getPriceByPid(pid);
 
         Date start = carstop.getStartTime();
         Date end = new Date();

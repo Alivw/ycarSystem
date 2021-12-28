@@ -207,7 +207,7 @@
 <!--                                <span th:text="${i}"></span>-->
 <!--                            </a>  </li>-->
 <!--                        </span>-->
-                        <li th:each="i:${#numbers.sequence(1,pageInfo.pages-1)}"  ><a th:href="'javascript:gotoPage('+${i}+')'">
+                        <li th:each="i:${#numbers.sequence(1,pageInfo.pages)}"  ><a th:href="'javascript:gotoPage('+${i}+')'">
                                                             <span th:text="${i}"></span>
                                                         </a>  </li>
                         <li><a th:href="'javascript:gotoPage('+${pageInfo.nextPage}+')'" >下一页</a></li>

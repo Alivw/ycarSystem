@@ -15,9 +15,13 @@
             <if test="carPositionNo != null and carPositionNo != ''">
                 carPositionNo,
             </if>
+            <if test="pid != null and pid != '' ">
+                pid,
+            </if>
             <if test="startTime != null ">
                 startTime,
             </if>
+
             <if test="endTime != null ">
                 endTime,
             </if>
@@ -43,8 +47,12 @@
             <if test="carTypeId != null and carTypeId != ''">
                 #{carTypeId},
             </if>
+
             <if test="carPositionNo != null and carPositionNo != ''">
                 #{carPositionNo},
+            </if>
+            <if test="pid != null and pid != '' ">
+                #{pid},
             </if>
             <if test="startTime != null">
                 #{startTime},
@@ -75,8 +83,13 @@
             <if test="carTypeId != null and carTypeId != ''">
                carTypeId =  #{carTypeId},
             </if>
+
+            <if test="pid != null and pid != ''">
+                pid = #{pid},
+            </if>
+
             <if test="carPositionNo != null and carPositionNo != ''">
-               carPositionNo= #{carPositionNo},
+                carPositionNo= #{carPositionNo},
             </if>
             <if test="startTime != null">
                startTime= #{startTime},

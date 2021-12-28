@@ -51,7 +51,7 @@ public interface CarPositionMapper {
      * @param carPositionNo
      * @return
      */
-    Float getPriceByPositonNo(String carPositionNo);
+    Float getPriceByPid(Integer carPositionNo);
 
     /**
      * 通过 positionNo 获取 entity

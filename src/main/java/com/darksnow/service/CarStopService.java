@@ -17,14 +17,15 @@ public interface CarStopService {
      */
     List<Tcarstop> list();
 
-    boolean updateStopCar(Tcarstop tcarstop, Integer pid);
+    boolean updateStopCar(Tcarstop tcarstop);
 
     /**
      * 停车 离场
      * @param cid
+     * @param pid
      * @return
      */
-    boolean leaveCar(Integer cid);
+    boolean leaveCar(Integer cid, Integer pid);
 
     /**
      * 根据id 删除
